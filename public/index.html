@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row card-panel">
+            <form>
+                <div class="input-field">
+                    <input type="text" id="text" class="validate" placeholder="Take out trash">
+                    <label for="text">Text</label>
+                </div>
+                <div class="input-field">
+                    <button id="addItem" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="row card-panel">
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>To Do</th>
+                        <th>Is Done</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="items">
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <script>
+
+
+        function getItems() {
+            axios.get('/items')
+                .then(({ data }))
+            
+        }
+
+        function addItems() {
+            axios.post('/items', item)
+        }
+
+    </script>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>
