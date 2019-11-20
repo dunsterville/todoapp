@@ -12,6 +12,7 @@ document.getElementById('addTodo').addEventListener('click', e => {
     .catch(err => console.log(err))
 })
 
+
 document.addEventListener('click', e => {
   if(e.target.className === 'complete') {
     this.nextSibling.classList.toggle('completed')

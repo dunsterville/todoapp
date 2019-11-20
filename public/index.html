@@ -24,11 +24,7 @@
                     <label for="text">Text</label>
                 </div>
                 <div class="input-field">
-<<<<<<< HEAD
-                    <button id="addItem" class="btn waves-effect waves-light" type="submit" name="action">Add To
-=======
                     <button id="addTodo" class="btn waves-effect waves-light" type="submit" name="action">Add Todo
->>>>>>> d8a6ba9bbd7f8e2cfd178e35f4fc2897b84839a4
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -52,19 +48,21 @@
     </div>
     <script>
 
-        function getItems() {
-            axios.get('/items')
-                .then(({ data }))
+document.getElementById('addTodo').addEventListener('click', e => {
+  e.preventDefault()
+  let todo = {
+    name: document.getElementById('name').value
+  }
+  axios.post('/todos', todo)
+    .then(res => {
+      let todo = document.createElement('div')
+      todo.innerHTML = `<div class="complete"></div><h5>${todo.name}</h5><button class="delete btn btn-outline-danger">Delete</button>`
+      document.getElementById('todos').append(todo)
+    })
+    .catch(err => console.log(err))
+})
+axios.delete('/')
 
-        }
-
-        function addItems() {
-            axios.post('/items', item)
-        }
-
-
-
-        
     </script>
 
 
