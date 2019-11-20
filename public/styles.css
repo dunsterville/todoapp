@@ -1,3 +1,23 @@
+.todoItem {
+  display: flex;
+  margin-top: 25px;
+}
+
+.todoName {
+  margin: 0 30px;
+}
+
+.complete {
+  width: 25px;
+  height: 25px;
+  border: solid 2px #ccc;
+  border-radius: 50%;
+}
+
 .completed {
+  background-color: #ccc;
+}
+
+.completedStrike {
   text-decoration: line-through;
 }
