@@ -1,6 +1,6 @@
 module.exports = app => {
 
-app.get('/items', (req,res) =>{
+app.get('/todos', (req,res) =>{
     Todo.findAll()
         .then(todo=> {
         res.json(todo)
@@ -9,7 +9,7 @@ app.get('/items', (req,res) =>{
 });
 
 
-app.post('/items', (req, res) => {
+app.post('/todos', (req, res) => {
     Todo.create(req.body)
     .then(() => {
         res.sendStatus(200)
@@ -19,7 +19,7 @@ app.post('/items', (req, res) => {
 
 
 
-app.put('/items/:id', (req, res) => {
+app.put('/todos/:id', (req, res) => {
     Todo.findOne({where: {id: parseInt(req.params.id)}})
     .then(todo => {
         todo.update(req.body)
@@ -29,7 +29,7 @@ res.sendStatus(200)
         })
 })
 
-app.delete('/items/:id', (req,res)=> {
+app.delete('/todos/:id', (req,res)=> {
     Todo.findOne({ where: {id: parseInt(req.params.id)}})
     .then(todo => todo.destroy())
     .then(() => res.sendStatus(200))

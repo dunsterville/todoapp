@@ -10,6 +10,7 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
@@ -47,16 +48,20 @@
     </div>
     <script>
 
-
-        function getItems() {
-            axios.get('/items')
-                .then(({ data }))
-            
-        }
-
-        function addItems() {
-            axios.post('/items', item)
-        }
+document.getElementById('addTodo').addEventListener('click', e => {
+  e.preventDefault()
+  let todo = {
+    name: document.getElementById('name').value
+  }
+  axios.post('/todos', todo)
+    .then(res => {
+      let todo = document.createElement('div')
+      todo.innerHTML = `<div class="complete"></div><h5>${todo.name}</h5><button class="delete btn btn-outline-danger">Delete</button>`
+      document.getElementById('todos').append(todo)
+    })
+    .catch(err => console.log(err))
+})
+axios.delete('/')
 
     </script>
 
