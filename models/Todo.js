@@ -3,7 +3,7 @@ module.exports = (Model, DataTypes, sequelize) => {
 
   Todo.init({
     name: {type: DataTypes.STRING, allowNull: false},
-    isCompleted: {type: DataTypes.BOOL, allowNull: false, defaultValue: false}
+    isCompleted: {type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false}
   }, {
     sequelize,
     modelName: 'todo'
